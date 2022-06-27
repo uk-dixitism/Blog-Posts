@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  padding: 20px;
+  background: #a7b8bb;
+}
+
+.header {
+  padding: 1px;
+  border-bottom: -50px;
+  font-size: 40px;
+  text-align: center;
+  background: rgb(182, 199, 197);
+}
+
+.leftcolumn {   
+  float: left;
+  width: 100%;
+}
+
+.card {
+   background-color: rgb(128, 143, 139);
+   padding: 20px;
+   margin-top: 20px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h2>Blog</h2>
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+        <h1>{{posts.title}}</h1>
+        <h5>{{posts.created_at}}</h5>
+        <p>{{posts.body}}</p>
+        <h5>{{posts.username}}</h5>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

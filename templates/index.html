@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  padding: 20px;
+  background: #a7b8bb;
+}
+
+.header {
+  padding: 1px;
+  border-bottom: -50px;
+  font-size: 40px;
+  text-align: center;
+  background: rgb(182, 199, 197);
+}
+
+.leftcolumn {   
+  float: left;
+  width: 100%;
+}
+
+.card {
+   background-color: rgb(128, 143, 139);
+   padding: 20px;
+   margin-top: 20px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a style="text-decoration: none; color: black;" href="logout">
+    <button style="font-size: 20px; margin-left: 1200px;">Logout</button>
+  </a>
+  <h4 style="margin-right: 940px;margin-top: -30px; font-weight: 200;">Welcome, <span style=" font-weight: 100; font-family:Arial; color: rgb(36, 48, 45);">{{username}}</span></h4>
+  <h2>Blogs</h2>
+  <a style="text-decoration: none; color: black;" href="/postCreate">
+    <button style="font-size: 20px; margin-left: 1200px;">Create</button>
+  </a>
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+    {% for post in posts reversed %}
+    <div class="card">
+      <a style="text-decoration: none; color: black;" href="/post/{{post.id}}">
+        <h2 style="font-family: 'Times New Roman'; color: rgb(10, 10, 10);">A blog by - {{post.username}}</h2>
+        <h2>{{post.title}}</h2>
+        <h5>{{post.created_at}}</h5>
+        <p>{{post.body|truncatewords:20}}</p>
+        
+      </a>
+      <button style="margin-left: 1200px;">
+        <a style="text-decoration: none; color: black;" href="/edit/{{post.id}}">Edit</a>
+      </button>
+      <button style="margin-left: 1200px;margin-top: 5px;">
+        <a style="text-decoration: none; color: black;" href="/postDelete/{{post.id}}">Delete</a>
+      </button>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+</body>
+</html>
